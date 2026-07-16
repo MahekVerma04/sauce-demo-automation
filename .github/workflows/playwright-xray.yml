@@ -1,0 +1,42 @@
+name: Playwright Tests & Jira Xray Upload
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # Allows you to manually trigger this from GitHub or Jira via a button!
+
+jobs:
+  run-tests-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-node-version: '3.11'
+        cache: 'pip'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest playwright pytest-playwright requests
+
+    - name: Ensure Playwright Browsers are Installed
+      run: playwright install --with-deps
+
+    - name: Run Tests & Generate Report
+      # This runs the tests and forces creation of the XML file Xray needs
+      run: pytest --junitxml=results/junit-report.xml
+      continue-on-error: true # Ensures pipeline keeps going to upload results even if a test fails!
+
+    - name: Run Upload Script
+      # Injects the hidden credentials securely into the script environment
+      env:
+        XRAY_CLIENT_ID: ${{ secrets.XRAY_CLIENT_ID }}
+        XRAY_CLIENT_SECRET: ${{ secrets.XRAY_CLIENT_SECRET }}
+      run: python name_of_your_upload_script.py
