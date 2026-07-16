@@ -5,7 +5,7 @@ import requests
 CLIENT_ID = os.getenv("XRAY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("XRAY_CLIENT_SECRET")
  # From Jira > Apps > Xray > API Keys
-PROJECT_KEY = "SD" 
+PROJECT_KEY = "DEM" 
 
 print("1. Authenticating with Xray Cloud...")
 auth_url = "https://xray.cloud.getxray.app/api/v2/authenticate"
@@ -23,8 +23,8 @@ print("Authentication successful!")
 
 print("\n2. Uploading JUnit results file to Xray...")
 # Endpoint for importing standard JUnit XML
-#import_url = f"https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey={PROJECT_KEY}"
-import_url = "https://xray.cloud.getxray.app/api/v2/import/execution/junit?testExecKey=SD-13" 
+import_url = f"https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey={PROJECT_KEY}"
+#import_url = "https://xray.cloud.getxray.app/api/v2/import/execution/junit?testExecKey=SD-13" 
 # Update headers to indicate we are sending raw XML
 headers = {
     "Authorization": f"Bearer {token}",
