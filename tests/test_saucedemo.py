@@ -2,8 +2,8 @@ from playwright.sync_api import Page, expect
 import pytest
 
 
-def test_sauce_demo_sd_2(page: Page, record_property):
-    record_property("test_key", "SD-2")
+def test_sauce_demo_dem_2(page: Page, record_property):
+    record_property("test_key", "DEM-2")
     page.goto('https://saucedemo.com')
 
     page.get_by_placeholder('Username').fill('standard_user')    
@@ -29,7 +29,7 @@ def login(page: Page, user, password):
 )
 
 
-def test_login_sd_2(page,user, password):
+def test_login_dem_2(page,user, password):
     login(page,user,password)
     assert 'inventory' in page.url
 
