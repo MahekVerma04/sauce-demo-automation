@@ -3,7 +3,7 @@ import pytest
 
 
 def test_sauce_demo_sd_2(page: Page, record_property):
-    record_property("test_key", "DS-2")
+    record_property("test_key", "SD-2")
     page.goto('https://saucedemo.com')
 
     page.get_by_placeholder('Username').fill('standard_user')    
