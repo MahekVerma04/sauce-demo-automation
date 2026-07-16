@@ -24,7 +24,7 @@ print("Authentication successful!")
 print("\n2. Uploading JUnit results file to Xray...")
 # Endpoint for importing standard JUnit XML
 #import_url = f"https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey={PROJECT_KEY}"
-import_url = "https://xray.cloud.getxray.app/api/v2/import/execution/junit?testExecKey=SD-13"
+import_url = "https://xray.cloud.getxray.app/api/v2/import/execution/junit?testExecKey=SD-13" 
 # Update headers to indicate we are sending raw XML
 headers = {
     "Authorization": f"Bearer {token}",
