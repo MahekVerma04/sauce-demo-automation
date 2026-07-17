@@ -11,6 +11,7 @@ def test_sauce_demo_dem_2(page: Page, record_property):
     page.get_by_role('button',name='login', exact=False).click()
     #expect(page).to_have_url('https://saucedemo.com/inventory.html')
     expect(page).to_have_url('https://saucedemo.com/inventory.html')
+    expect(page).to_have_url('[https://saucedemo.com/inventory.html](https://saucedemo.com/inventory.html)')
     page.get_by_role('button', name='Add to cart').first.click()
 
 def login(page: Page, user, password):
