@@ -33,6 +33,8 @@ jobs:
         pytest --junitxml=results/junit-report.xml
       continue-on-error: true # Ensures the pipeline keeps running to upload results even if tests fail
 
+ 
+
     # 5. Execute your custom Python script to upload results to Jira Xray
     - name: Upload results to Jira Xray
       env:
