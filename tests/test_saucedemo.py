@@ -8,16 +8,16 @@ def test_sauce_demo_dem_2(page: Page, record_property):
 
     page.get_by_placeholder('Username').fill('standard_user')    
     page.get_by_placeholder('Password').fill('secret_sauce')    
-    page.get_by_role('button',name='login').click()
+    page.get_by_role('button',name='login', exact=False).click()
     #expect(page).to_have_url('https://saucedemo.com/inventory.html')
-    expect(page).to_have_url('https://www.saucedemo.com/inventory.html')
+    expect(page).to_have_url('https://saucedemo.com/inventory.html')
     page.get_by_role('button', name='Add to cart').first.click()
 
 def login(page: Page, user, password):
     page.goto('https://saucedemo.com')
     page.get_by_placeholder('Username').fill(user)
     page.get_by_placeholder('Password').fill(password)
-    page.get_by_role('button', name='Login').first.click()
+    page.get_by_role('button', name='Login', exact=False).first.click()
 
 
 @pytest.mark.parametrize(
